@@ -31,26 +31,43 @@ class Connect4
   end
 
   def show_board
+    for i in 0...@board.length
+    end
+
   end
 
-  #Ask player which column to play piece
+  #Ask player which column to play marker
   def play_column
     #Makes players into X and O as their markers
     puts "It's #{player.even? ? marker = "X" : marker = "O"}'s turn!'"
-    puts "Which column would you like to play? (1-7)"
+    puts "Choose a column to play your marker (1-7)"
     answer = gets.chomp
   end
 
-  def place_marker(marker)
+  #Method to mark column
+  #Column starts at index 0, use z to count to 0 to drop marker to bottom of board
+  def place_marker(marker, column)
+    column -= 1   #index 0
+    z = @board.length - 1
+    until @board[z][column] == "_"
+      z -= 1
+    end
+    @board[x][column] = marker
   end
 
-  def move
+  #Take input 1-7 from play_column and place_marker on board
+  def move(marker)
+    column = 0
+    until column > 0 && column < 8
+      column = play_column.to_i
+    end
+    @position = place_marker(marker, column)
   end
 
-#Turn takes place, X or O, piece is played, board is shown, player is switched
+  #Turn takes place, X or O, piece is played, board is shown, player is switched
   def turn
     marker = @turn_count.even? ? marker = "X" : marker = "O"
-    place_marker(marker)
+    move
     print "Current board: "
     show_board
     @player +=1
@@ -63,15 +80,17 @@ class Connect4
     horizontal || vertical || diagonal_left || diagonal_right
   end
 
-  #horizontal - 4 in a row in rows
+  #horizontal - 4 in a row in rows - incomplete
   def horizontal
+    column.include?("XXXX") || column.include?("OOOO") #true or false
   end
 
-  #vertical -  4 in a row in columns
+  #vertical -  4 in a row in columns - incomplete
   def vertical
+    column.include?("XXXX") || column.include?("OOOO") #true or false
   end
 
-  #diagonal_left & diagonal_right - 4 in a row across diagonals
+  #diagonal_left & diagonal_right - 4 in a row across diagonals - incomplete
   def diagonal_left
   end
 
