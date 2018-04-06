@@ -30,10 +30,8 @@ class Connect4
     end
   end
 
+  #incomplete, need to test if @board array displays or some sort of border is needed
   def show_board
-    for i in 0...@board.length
-    end
-
   end
 
   #Ask player which column to play marker
@@ -82,12 +80,12 @@ class Connect4
 
   #horizontal - 4 in a row in rows - incomplete
   def horizontal
-    column.include?("XXXX") || column.include?("OOOO") #true or false
+    column.include?("XXXX") || column.include?("OOOO") #true or false for 4 in a row x's or o's
   end
 
   #vertical -  4 in a row in columns - incomplete
   def vertical
-    column.include?("XXXX") || column.include?("OOOO") #true or false
+    column.include?("XXXX") || column.include?("OOOO") #true or false for 4 in a row x's or o's
   end
 
   #diagonal_left & diagonal_right - 4 in a row across diagonals - incomplete
